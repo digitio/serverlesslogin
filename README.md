@@ -26,18 +26,18 @@ Here are some points to highlight the key features of your project:
 
 ### How to Get Started:
 1. **Clone the Repository**:
-   ```bash
+   ```
    git clone https://github.com/digitio/serverless-login-and-storage.git
    ```
 
 2. **Install Dependencies**:
-   ```bash
+   ```
    cd serverless-login-and-storage
    flutter pub get
    ```
 
 3. **Run the Application**:
-   ```bash
+   ```
    flutter run
    ```
 
