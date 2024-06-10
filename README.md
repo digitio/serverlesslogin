@@ -4,8 +4,6 @@ A basic standalone application made by chatGPT for serverless login without goog
 service to handle subscription and in the screen where you can edit it as well as delete it 
 according to your users data.
 
-That's great! It sounds like you have created a Flutter application that handles login and data storage locally, without relying on a server, using SHA encryption for security. Additionally, you are managing the project's version control on GitHub.
-
 Here are some points to highlight the key features of your project:
 
 ### Key Features:
