@@ -9,4 +9,9 @@ according to your users data.
 - Local Storage
 - Data Encryption
 - Login & Registration
-- Recover password (Not included)
+- Recover Password (Not included)
+- Recover Password (Not included)
+- Multi level User Login (Not included)
+
+## ChatGPT Link for complete link:
+- https://chatgpt.com/share/e89d083f-c26c-4962-b14c-af108910800c (ChatGPT 4o)
