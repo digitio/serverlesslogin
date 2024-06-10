@@ -26,24 +26,24 @@ class AuthService {
   }
 
   Future<void> saveSubscription(Subscription subscription) async {
-    final List<String>? subscriptionsJson =
+    final List<String> subscriptionsJson =
         _prefs.getStringList('subscriptions') ?? [];
-    subscriptionsJson?.add(jsonEncode(subscription.toJson()));
-    await _prefs.setStringList('subscriptions', subscriptionsJson!);
+    subscriptionsJson.add(jsonEncode(subscription.toJson()));
+    await _prefs.setStringList('subscriptions', subscriptionsJson);
   }
 
   Future<void> updateSubscription(Subscription subscription, int index) async {
-    final List<String>? subscriptionsJson =
+    final List<String> subscriptionsJson =
         _prefs.getStringList('subscriptions') ?? [];
-    subscriptionsJson![index] = jsonEncode(subscription.toJson());
+    subscriptionsJson[index] = jsonEncode(subscription.toJson());
     await _prefs.setStringList('subscriptions', subscriptionsJson);
   }
 
   Future<void> deleteSubscription(int index) async {
-    final List<String>? subscriptionsJson =
+    final List<String> subscriptionsJson =
         _prefs.getStringList('subscriptions') ?? [];
-    subscriptionsJson?.removeAt(index);
-    await _prefs.setStringList('subscriptions', subscriptionsJson!);
+    subscriptionsJson.removeAt(index);
+    await _prefs.setStringList('subscriptions', subscriptionsJson);
   }
 
   List<Subscription> getSubscriptions() {

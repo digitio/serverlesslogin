@@ -42,66 +42,67 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _editSubscription(Subscription subscription, int index) {
-    final _editNameController = TextEditingController(text: subscription.name);
-    final _editSubscriptionTypeController =
+    final editNameController = TextEditingController(text: subscription.name);
+    final editSubscriptionTypeController =
         TextEditingController(text: subscription.subscriptionType);
-    final _editWebsiteNameController =
+    final editWebsiteNameController =
         TextEditingController(text: subscription.websiteName);
-    DateTime _editStartDate = subscription.startDate;
-    DateTime _editEndDate = subscription.endDate;
+    DateTime editStartDate = subscription.startDate;
+    DateTime editEndDate = subscription.endDate;
 
     showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Edit Subscription'),
+          title: const Text('Edit Subscription'),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               TextFormField(
-                controller: _editNameController,
-                decoration: InputDecoration(labelText: 'Name'),
+                controller: editNameController,
+                decoration: const InputDecoration(labelText: 'Name'),
               ),
               TextFormField(
-                controller: _editSubscriptionTypeController,
-                decoration: InputDecoration(labelText: 'Subscription Type'),
+                controller: editSubscriptionTypeController,
+                decoration:
+                    const InputDecoration(labelText: 'Subscription Type'),
               ),
               TextFormField(
-                controller: _editWebsiteNameController,
-                decoration: InputDecoration(labelText: 'Website Name'),
+                controller: editWebsiteNameController,
+                decoration: const InputDecoration(labelText: 'Website Name'),
               ),
               ListTile(
                 title: Text(
-                    'Start Date: ${DateFormat.yMd().format(_editStartDate)}'),
-                trailing: Icon(Icons.keyboard_arrow_down),
+                    'Start Date: ${DateFormat.yMd().format(editStartDate)}'),
+                trailing: const Icon(Icons.keyboard_arrow_down),
                 onTap: () async {
                   DateTime? picked = await showDatePicker(
                     context: context,
-                    initialDate: _editStartDate,
+                    initialDate: editStartDate,
                     firstDate: DateTime(2000),
                     lastDate: DateTime(2101),
                   );
-                  if (picked != null && picked != _editStartDate) {
+                  if (picked != null && picked != editStartDate) {
                     setState(() {
-                      _editStartDate = picked;
+                      editStartDate = picked;
                     });
                   }
                 },
               ),
               ListTile(
                 title:
-                    Text('End Date: ${DateFormat.yMd().format(_editEndDate)}'),
-                trailing: Icon(Icons.keyboard_arrow_down),
+                    Text('End Date: ${DateFormat.yMd().format(editEndDate)}'),
+                trailing: const Icon(Icons.keyboard_arrow_down),
                 onTap: () async {
                   DateTime? picked = await showDatePicker(
                     context: context,
-                    initialDate: _editEndDate,
+                    initialDate: editEndDate,
                     firstDate: DateTime(2000),
                     lastDate: DateTime(2101),
                   );
-                  if (picked != null && picked != _editEndDate) {
+                  if (picked != null && picked != editEndDate) {
                     setState(() {
-                      _editEndDate = picked;
+                      editEndDate = picked;
                     });
                   }
                 },
@@ -112,18 +113,18 @@ class _HomeScreenState extends State<HomeScreen> {
             ElevatedButton(
               onPressed: () {
                 final editedSubscription = Subscription(
-                  name: _editNameController.text,
-                  subscriptionType: _editSubscriptionTypeController.text,
-                  websiteName: _editWebsiteNameController.text,
-                  startDate: _editStartDate,
-                  endDate: _editEndDate,
+                  name: editNameController.text,
+                  subscriptionType: editSubscriptionTypeController.text,
+                  websiteName: editWebsiteNameController.text,
+                  startDate: editStartDate,
+                  endDate: editEndDate,
                 );
                 widget.authService
                     .updateSubscription(editedSubscription, index);
                 setState(() {});
                 Navigator.of(context).pop();
               },
-              child: Text('Save'),
+              child: const Text('Save'),
             ),
           ],
         );
@@ -137,10 +138,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Manage Subscriptions'),
+        title: const Text('Manage Subscriptions'),
         actions: [
           IconButton(
-            icon: Icon(Icons.logout),
+            icon: const Icon(Icons.logout),
             onPressed: () {},
           ),
         ],
@@ -155,20 +156,22 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   TextFormField(
                     controller: _nameController,
-                    decoration: InputDecoration(labelText: 'Name'),
+                    decoration: const InputDecoration(labelText: 'Name'),
                     validator: (value) =>
                         value!.isEmpty ? 'Please enter a name' : null,
                   ),
                   TextFormField(
                     controller: _subscriptionTypeController,
-                    decoration: InputDecoration(labelText: 'Subscription Type'),
+                    decoration:
+                        const InputDecoration(labelText: 'Subscription Type'),
                     validator: (value) => value!.isEmpty
                         ? 'Please enter a subscription type'
                         : null,
                   ),
                   TextFormField(
                     controller: _websiteNameController,
-                    decoration: InputDecoration(labelText: 'Website Name'),
+                    decoration:
+                        const InputDecoration(labelText: 'Website Name'),
                     validator: (value) =>
                         value!.isEmpty ? 'Please enter a website name' : null,
                   ),
@@ -178,7 +181,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: ListTile(
                           title: Text(
                               'Start Date: ${DateFormat.yMd().format(_startDate)}'),
-                          trailing: Icon(Icons.keyboard_arrow_down),
+                          trailing: const Icon(Icons.keyboard_arrow_down),
                           onTap: () async {
                             DateTime? picked = await showDatePicker(
                               context: context,
@@ -198,7 +201,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: ListTile(
                           title: Text(
                               'End Date: ${DateFormat.yMd().format(_endDate)}'),
-                          trailing: Icon(Icons.keyboard_arrow_down),
+                          trailing: const Icon(Icons.keyboard_arrow_down),
                           onTap: () async {
                             DateTime? picked = await showDatePicker(
                               context: context,
@@ -218,11 +221,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   ElevatedButton(
                       onPressed: _addSubscription,
-                      child: Text('Add Subscription')),
+                      child: const Text('Add Subscription')),
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Expanded(
               child: ListView.builder(
                 itemCount: subscriptions.length,
@@ -233,14 +236,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     background: Container(
                       color: Colors.red,
                       alignment: Alignment.centerLeft,
-                      padding: EdgeInsets.only(left: 20),
-                      child: Icon(Icons.delete, color: Colors.white),
+                      padding: const EdgeInsets.only(left: 20),
+                      child: const Icon(Icons.delete, color: Colors.white),
                     ),
                     secondaryBackground: Container(
                       color: Colors.blue,
                       alignment: Alignment.centerRight,
-                      padding: EdgeInsets.only(right: 20),
-                      child: Icon(Icons.edit, color: Colors.white),
+                      padding: const EdgeInsets.only(right: 20),
+                      child: const Icon(Icons.edit, color: Colors.white),
                     ),
                     confirmDismiss: (direction) async {
                       if (direction == DismissDirection.endToStart) {
@@ -250,19 +253,19 @@ class _HomeScreenState extends State<HomeScreen> {
                         return showDialog(
                           context: context,
                           builder: (context) => AlertDialog(
-                            title: Text('Delete Subscription'),
-                            content: Text(
+                            title: const Text('Delete Subscription'),
+                            content: const Text(
                                 'Are you sure you want to delete this subscription?'),
                             actions: [
                               ElevatedButton(
                                 onPressed: () =>
                                     Navigator.of(context).pop(false),
-                                child: Text('Cancel'),
+                                child: const Text('Cancel'),
                               ),
                               ElevatedButton(
                                 onPressed: () =>
                                     Navigator.of(context).pop(true),
-                                child: Text('Delete'),
+                                child: const Text('Delete'),
                               ),
                             ],
                           ),
